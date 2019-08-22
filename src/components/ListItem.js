@@ -13,7 +13,14 @@ const line = {
 function TodoItem(props) {
   return (
     <div className="todoitem" style={styles}>
-      <input style={line} type="checkbox" />
+      <input
+        style={line}
+        type="checkbox"
+        checked={props.item.completed}
+        onChange={() => {
+          props.handleChange(props.item.id);
+        }}
+      />
       <p style={line}>{props.item.text}</p>
     </div>
   );
