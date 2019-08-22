@@ -17,11 +17,8 @@ class App extends Component {
         if (todo.id === id) todo.completed = !todo.completed;
         return todo;
       });
-      return {
-        todos: update
-      };
+      return { todos: update };
     });
-    console.log("Changed " + id);
   }
   render() {
     const todoItem = this.state.todos.map(item => {

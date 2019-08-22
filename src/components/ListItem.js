@@ -1,27 +1,32 @@
 import React from "react";
 
 const styles = {
-  display: "flex",
-  justifyContent: "center",
-  marginTop: 35
-};
-
-const line = {
-  display: "inline-flex"
+  todoItem: { display: "flex", justifyContent: "center", marginTop: 35 },
+  done: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: 35,
+    textDecoration: "line-through",
+    color: "black"
+  },
+  line: { display: "inline-flex" }
 };
 
 function TodoItem(props) {
   return (
-    <div className="todoitem" style={styles}>
+    <div
+      className="todoitem"
+      style={props.item.completed ? styles.done : styles.todoItem}
+    >
       <input
-        style={line}
+        style={styles.line}
         type="checkbox"
         checked={props.item.completed}
         onChange={() => {
           props.handleChange(props.item.id);
         }}
       />
-      <p style={line}>{props.item.text}</p>
+      <p style={styles.line}>{props.item.text}</p>
     </div>
   );
 }
